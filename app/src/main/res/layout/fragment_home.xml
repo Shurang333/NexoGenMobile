@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_base"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HOME"
+            android:textColor="@color/text_primary"
+            android:textSize="28sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.05"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="remote session control"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:fontFamily="monospace"/>
+
+        <!-- ПОДКЛЮЧЕНИЕ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="vertical"
+            android:background="@drawable/bg_panel"
+            android:padding="20dp">
+
+            <!-- Переключатель LAN -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ЛОКАЛЬНАЯ СЕТЬ"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="10sp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.1"/>
+
+                <Switch
+                    android:id="@+id/lanSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/border_subtle"/>
+
+            <!-- Адрес сервера (скрывается в LAN-режиме) -->
+            <LinearLayout
+                android:id="@+id/serverFieldWrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="АДРЕС СЕРВЕРА"
+                    android:textColor="@color/text_muted"
+                    android:textSize="10sp"
+                    android:fontFamily="monospace"/>
+
+                <EditText
+                    android:id="@+id/serverInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="192.168.1.42:8080"
+                    android:inputType="textUri"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_muted"
+                    android:fontFamily="monospace"
+                    android:textSize="13sp"
+                    android:singleLine="true"/>
+            </LinearLayout>
+
+            <!-- Блок "Устройства рядом" (только в LAN-режиме) -->
+            <LinearLayout
+                android:id="@+id/lanBlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="УСТРОЙСТВА РЯДОМ"
+                        android:textColor="@color/text_muted"
+                        android:textSize="10sp"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.1"/>
+
+                    <Button
+                        android:id="@+id/btnScan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:background="@drawable/bg_button_ghost"
+                        android:text="ПОИСК"
+                        android:textColor="@color/accent"
+                        android:textSize="10sp"
+                        android:fontFamily="monospace"
+                        android:minWidth="0dp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/scanStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="нажмите ПОИСК"
+                    android:textColor="@color/text_muted"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"/>
+
+                <LinearLayout
+                    android:id="@+id/discoveredList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"/>
+            </LinearLayout>
+
+            <!-- ID устройства -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="ID УСТРОЙСТВА"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp"
+                android:fontFamily="monospace"/>
+
+            <EditText
+                android:id="@+id/peerIdInput"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_input"
+                android:hint="XXXX-XXXX-XXXX"
+                android:inputType="textCapCharacters"
+                android:maxLength="14"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_muted"
+                android:fontFamily="monospace"
+                android:textSize="13sp"
+                android:letterSpacing="0.05"
+                android:singleLine="true"/>
+
+            <TextView
+                android:id="@+id/peerIdError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Только латинские A-F и цифры 0-9"
+                android:textColor="@color/danger"
+                android:textSize="11sp"
+                android:fontFamily="monospace"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btnTestConnection"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_button_ghost"
+                android:text="ПРОВЕРИТЬ СВЯЗЬ"
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp"
+                android:fontFamily="monospace"/>
+
+            <TextView
+                android:id="@+id/connectionTestResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text=""
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp"
+                android:fontFamily="monospace"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btnConnect"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_button_primary"
+                android:text="ПОДКЛЮЧИТЬСЯ →"
+                android:textColor="@color/accent"
+                android:textSize="12sp"
+                android:fontFamily="monospace"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

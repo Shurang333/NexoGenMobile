@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.NexoGen" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:windowBackground">@color/bg_base</item>
+        <item name="android:statusBarColor">@color/bg_deep</item>
+        <item name="android:navigationBarColor">@color/bg_deep</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+    </style>
+
+    <!-- Splash: только тёмный фон, без иконки -->
+    <style name="Theme.NexoGen.Splash" parent="Theme.NexoGen">
+        <item name="android:windowBackground">@color/bg_base</item>
+        <!-- Android 12+ splash — иконка минимальная, анимация выключена -->
+        <item name="android:windowSplashScreenBackground" tools:targetApi="s">@color/bg_base</item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">@android:color/transparent</item>
+        <item name="android:windowSplashScreenAnimationDuration" tools:targetApi="s">0</item>
+        <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="s">@color/bg_base</item>
+    </style>
+
+    <!-- Тема для активной сессии -->
+    <style name="Theme.NexoGen.Session" parent="Theme.NexoGen">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="p">shortEdges</item>
+    </style>
+</resources>
